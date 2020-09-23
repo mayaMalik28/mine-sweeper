@@ -17,7 +17,12 @@ var gGame = {
 }
 
 function init() {
-    gGame.isOn = true
+    gGame = {
+        isOn: true,
+        shownCount: 0,
+        markedCount: 0,
+        secsPassed: 0,
+    }
     gBoard = buildBoard();
     console.log('board:', gBoard);
     setRandomMines();
@@ -26,6 +31,8 @@ function init() {
     renderMinesToMark();
     var elSmily = document.querySelector('.smily');
     elSmily.innerText = '😃'
+    var elTimer = document.querySelector('.timer');
+    elTimer.innerText = '000'
 }
 
 function buildBoard() {
@@ -125,7 +132,6 @@ function showCell(rowIdx, colIdx) {
 
 
 function checkVictory() {
-    console.log('markcont', gGame.markedCount);
     if (!(gGame.markedCount === gLevel.mines)) return;
     if (!(gGame.shownCount === (gLevel.size ** 2) - gLevel.mines)) return;
     var elSmily = document.querySelector('.smily');
@@ -136,7 +142,6 @@ function checkVictory() {
 }
 
 function gameOver() {
-    console.log('game over');
     clearInterval(gTimer);
     gGame.isOn = false;
     var elSmily = document.querySelector('.smily');
@@ -148,7 +153,6 @@ function showAllMines() {
     for (var i = 0; i < gBoard.length; i++) {
         for (var j = 0; j < gBoard[0].length; j++) {
             var cell = gBoard[i][j];
-            console.log('show mines');
 
             if (cell.isShown) continue;
             if ((cell.isMarked && cell.isMine) || (!cell.isMarked && !cell.isMine)) continue;
@@ -169,7 +173,7 @@ function showNegsCells(rowIdx, colIdx) {
             if (i === rowIdx && j === colIdx ||
                 (j < 0 || j > gBoard.length - 1)) continue;
             var cell = gBoard[i][j];
-            if (cell.isMine) continue;
+            if (cell.isMine || cell.isMarked) continue;
 
             showCell(i, j);
         }
@@ -194,7 +198,6 @@ function markFlag(elCell, rowIdx, colIdx) {
 
 function renderMinesToMark() {
     var elMark = document.querySelector('.count-mark ');
-    console.log(elMark);
     elMark.innerText = gLevel.mines - gGame.markedCount;
 }
 
@@ -229,10 +232,9 @@ function chooseLevel(level) {
 function startTimer() {
     var startTime = Date.now();
     gTimer = setInterval(function() {
-        var currTime = (Date.now() - startTime) / 1000;
+        gGame.secsPassed = (Date.now() - startTime) / 1000;
         var elTime = document.querySelector('.timer');
-        // console.log(elTime);
-        elTime.innerText = parseInt(currTime);
+        elTime.innerText = parseInt(gGame.secsPassed);
     }, 1000);
 }
 
