@@ -1,0 +1,36 @@
+.cell {
+    border: 1px solid;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border-radius: 5%;
+    background-color: rgb(68, 68, 151);
+}
+
+.show {
+    background-color: rgb(166, 166, 219);
+}
+
+.mine-steped {
+    background-color: red;
+}
+
+.one-line {
+    display: inline-block;
+    /* margin-left: 10px;
+    margin-right: 10px; */
+    margin: 15px;
+    /* border: rgb(68, 68, 151) solid; */
+    width: 50px;
+    height: 10px;
+    position: relative;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+    text-align: center;
+}

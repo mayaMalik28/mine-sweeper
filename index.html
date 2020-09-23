@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mine-sweeper</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="init()">
+    <h1>mine sweeper</h1>
+    <div class="level">
+        <button onclick="chooseLevel(1)">easy</button>
+        <button onclick="chooseLevel(2)">mdium</button>
+        <button onclick="chooseLevel(3)">hard</button>
+    </div>
+    <div class="user-info">
+        <div class="count-mark one-line"> 00</div>
+        <div class="smily one-line">😃</div>
+        <div class="timer one-line">000</div>
+    </div>
+    <table>
+        <tbody class="board">
+        </tbody>
+    </table>
+
+
+    <script src="js/main.js"></script>
+    <script src="js/utils.js"></script>
+</body>
+
+</html>
