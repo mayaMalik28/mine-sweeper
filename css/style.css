@@ -5,6 +5,7 @@
     text-align: center;
     border-radius: 5%;
     background-color: rgb(68, 68, 151);
+    cursor: pointer;
 }
 
 .show {
@@ -23,7 +24,14 @@
     /* border: rgb(68, 68, 151) solid; */
     width: 50px;
     height: 10px;
-    position: relative;
+}
+
+.smily {
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
 }
 
 table {
