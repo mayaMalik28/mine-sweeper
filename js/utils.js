@@ -1,17 +1,3 @@
-function negsCount(board, rowIdx, colIdx) {
-    var count = 0;
-    for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
-        if (i < 0 || i > board.length - 1) continue;
-        for (var j = colIdx - 1; j <= colIdx + 1; j++) {
-            if (i === rowIdx && j === colIdx ||
-                (j < 0 || j > board.length - 1)) continue;
-            var cell = board[i][j];
-            if (cell.isMine) count++;
-        }
-    }
-    return count
-}
-
 function shuffle(items) {
     var randIdx, keep, i;
     for (i = items.length - 1; i > 0; i--) {
