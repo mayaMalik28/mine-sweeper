@@ -40,3 +40,13 @@ function dissableRightClickMenu() {
         });
     }
 }
+
+function createLocations(board) {
+    var nums = [];
+    for (var i = 0; i < board.length; i++) {
+        for (var j = 0; j < board[0].length; j++) {
+            nums.push({ i: i, j: j });
+        }
+    }
+    return nums
+}

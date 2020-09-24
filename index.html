@@ -4,21 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mine-sweeper</title>
+    <title>mine-דweeper</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body onload="init()">
-    <h1>mine sweeper</h1>
+    <h1>Mine Sweeper</h1>
+    <hr>
     <div class="level">
-        <button onclick="chooseLevel(1)">easy</button>
-        <button onclick="chooseLevel(2)">mdium</button>
-        <button onclick="chooseLevel(3)">hard</button>
+        <button onclick="chooseLevel(1)">Easy</button>
+        <button onclick="chooseLevel(2)">Mdium</button>
+        <button onclick="chooseLevel(3)">Hard</button>
     </div>
     <div class="user-info">
+        <div class="hints one-line game-features">hints</div>
         <div class="count-mark one-line"> 00</div>
         <div class="smily one-line" onclick="init()">😃</div>
         <div class="timer one-line">000</div>
+        <div class="lives one-line game-features">lives</div>
     </div>
 
     <table>
@@ -26,9 +29,17 @@
         </tbody>
     </table>
 
+    <div class="scores">
+        <h2>Best Players:</h2>
+        <div class="easy">...</div>
+        <div class="medium">...</div>
+        <div class="hard">...</div>
+    </div>
 
-    <script src="js/main.js"></script>
     <script src="js/utils.js"></script>
+    <script src="js/cell.js"></script>
+    <script src="js/mines.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
