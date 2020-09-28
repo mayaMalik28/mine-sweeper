@@ -30,7 +30,6 @@ function init() {
     renderLives();
     renderHints();
     renderSafes();
-    console.log('gGame.isOn', gGame.isOn);
     renderPlaceMinesButton();
     renderExistsScore();
 }
@@ -59,7 +58,6 @@ function resetGame() {
     elSmily.innerText = SMILY;
     var elTimer = document.querySelector('.timer');
     elTimer.innerText = '000'
-    console.log('gGame.isOn', gGame.isOn);
 }
 
 function chooseLevel(level) {

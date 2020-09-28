@@ -49,6 +49,8 @@ function clickPlaceMines() {
 }
 
 function togglePlaceMines(elCell, rowIdx, colIdx) {
+    console.log('gMinesPlaced', gMinesPlaced);
+    if (gMinesPlaced === gLevel.mines) return;
     if (gBoard[rowIdx][colIdx].isMine) {
         gBoard[rowIdx][colIdx].isMine = false;
         gMinesPlaced--
