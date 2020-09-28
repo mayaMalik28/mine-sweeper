@@ -29,3 +29,36 @@ function showAllMines() {
         }
     }
 }
+
+function clickPlaceMines() {
+    // if ((gGame.shownCount > 0 || gGame.hints < gHintsCount) || (gGame.manualState.isOn && !gGame.manualState.isCurrentlySetting)) return;
+    if (gGame.isOn) return;
+    gGame.manualState.isOn = true;
+    if (gGame.manualState.isCurrentlySetting) {
+        if (gMinesPlaced !== gLevel.mines) return; //add some note that they need to fell all the mines
+        gGame.isOn = true;
+        gGame.manualState.isCurrentlySetting = false;
+        gBoard = setMineNegsCount(gBoard);
+        renderBoard();
+    } else {
+        gGame.manualState.isCurrentlySetting = true;
+        gBoard = createMat();
+        renderBoard();
+    }
+    renderPlaceMinesButton();
+}
+
+function togglePlaceMines(elCell, rowIdx, colIdx) {
+    if (gBoard[rowIdx][colIdx].isMine) {
+        gBoard[rowIdx][colIdx].isMine = false;
+        gMinesPlaced--
+        elCell.innerText = EMPTY;
+    } else {
+        gBoard[rowIdx][colIdx].isMine = true;
+        gMinesPlaced++
+        elCell.innerText = MINE;
+    }
+    renderPlaceMinesButton();
+    //the game won't start yet
+    return;
+}

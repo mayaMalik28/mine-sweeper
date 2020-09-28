@@ -24,7 +24,7 @@ function negsCount(board, rowIdx, colIdx) {
 
 function showCell(rowIdx, colIdx) {
     var cell = gBoard[rowIdx][colIdx];
-    if (cell.isShown) return; //not sure if I need - check later
+    if (cell.isShown) return;
     //model
     gGame.shownCount++;
     cell.isShown = true;
@@ -50,4 +50,36 @@ function showNegsCells(rowIdx, colIdx) {
             showCell(i, j);
         }
     }
+}
+
+function clickSafe() {
+    // safe can't be used if the game hasn't stated (first click on the board/manual state)
+    if (gGame.safe === 0 || !gGame.isOn) return;
+    var safeCells = findSafeCells();
+    var randIdx = getRandomInt(0, safeCells.length - 1);
+    var rowIdx = safeCells[randIdx].i;
+    var colIdx = safeCells[randIdx].j;
+
+    var cellSelector = '.' + getClassName(rowIdx, colIdx);
+    var elCell = document.querySelector(cellSelector);
+    elCell.classList.add('safe');
+    setTimeout(function() {
+        elCell.classList.remove('safe')
+    }, 2000);
+    gGame.safe--;
+    renderSafes();
+}
+
+function findSafeCells() {
+    var safeCells = []
+    for (var i = 0; i < gBoard.length; i++) {
+        for (var j = 0; j < gBoard[0].length; j++) {
+            console.log(`gBoard[${i}][${j}].isShown`, gBoard[i][j].isShown);
+            console.log(`gBoard[${i}][${j}].isMine`, gBoard[i][j].isMine);
+            if (gBoard[i][j].isMine || gBoard[i][j].isShown) continue;
+            console.log(gBoard[i][j]);
+            safeCells.push({ i: i, j: j, });
+        }
+    }
+    return safeCells;
 }
